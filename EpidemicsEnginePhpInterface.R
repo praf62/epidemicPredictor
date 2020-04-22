@@ -1,11 +1,10 @@
-g=1
-# args <- commandArgs(trailingOnly = TRUE); ROOT = "C:/xampp/htdocs/mesor/login/visao/covid19/"#valid for UFCA- server
+args <- commandArgs(trailingOnly = TRUE); ROOT = "C:/xampp/htdocs/mesor/login/visao/covid19/"#valid for UFCA- server
 LEVEL = list(COUNTRIES="PAÍSES", BRAZILIAN_STATES="ESTADOS BRASILEIROS")
-ROOT = "G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/";#valid for praf notebook
+# ROOT = "G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/";#valid for praf notebook
 # args = c(LEVEL$COUNTRIES, "@", "Argentina", "::", "Brazil", "::", "China", "::", "Germany", "::", "India", "::", "Iran", "::", "Italy", "::", "Japan", "::", "France", "::", "Korea,", "South", "::", "Spain", "::", "United", "Kingdom", "::", "US", "::", "Peru", "::", "Bolivia", "::", "Chile", "::", "Kosovo" )##PRAF
-args =  c(LEVEL$BRAZILIAN_STATES, "@", "PE", "::", "CE", "::", "SP", "::", "RJ", "::", "BA", "::", "MA", "::", "AM", "::", "DF", "::", "MG", "::", "AC", "::", "RR", "::", "RO", "::", "PR", "::", "SC")
+# args =  c(LEVEL$BRAZILIAN_STATES, "@", "PE", "::", "CE", "::", "SP", "::", "RJ", "::", "BA", "::", "MA", "::", "AM", "::", "DF", "::", "MG", "::", "AC", "::", "RR", "::", "RO", "::", "PR", "::", "SC")
 
-isToDebug <<- TRUE
+isToDebug <<- FALSE
 source(paste(ROOT, "Auxiliary/Auxiliar.R", sep=""))
 sourceMode <<- getSourceMode(isToDebug)
 sourceMode(paste(ROOT, "Epidemics/MainEpidemics.R", sep=""))
