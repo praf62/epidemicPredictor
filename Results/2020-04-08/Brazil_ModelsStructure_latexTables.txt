@@ -1,0 +1,50 @@
+% latex table generated in R 3.6.2 by xtable 1.8-4 package
+% Wed Apr 08 09:08:14 2020
+\begin{table}[ht]
+\centering
+\begin{tabular}{l|l|l}
+  \hline
+ & characteristic & Brazil \\ 
+  \hline
+trainingPercentual & trainingPercentual & 0.95 \\ 
+  forecastingTimeHorizon & forecastingTimeHorizon & 600 \\ 
+  GSA.max.call & GSA.max.call & 2e+04 \\ 
+  GSA.max.time & GSA.max.time & 600 \\ 
+  GSA.maxit & GSA.maxit & 1e+06 \\ 
+  GSA.temperature & GSA.temperature & 1e+06 \\ 
+  GSA.nb.stop.improvement & GSA.nb.stop.improvement & 20 \\ 
+  ROOT & ROOT & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/ \\ 
+  EPIDEMICS\_CODES\_PATH & EPIDEMICS\_CODES\_PATH & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/ \\ 
+  DATA\_PATH & DATA\_PATH & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Data/2020-04-08/ \\ 
+  RESULTS\_PATH & RESULTS\_PATH & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Results/2020-04-08/ \\ 
+  DATA\_LABELS & DATA\_LABELS & Brazil \\ 
+   \hline
+\end{tabular}
+\caption{Tuning parameters of the COVID-19 daily incidence models for each country taken into account (Brazil).} 
+\label{tab:tuningParameters_tb}
+\end{table}
+% latex table generated in R 3.6.2 by xtable 1.8-4 package
+% Wed Apr 08 09:08:14 2020
+\begin{table}[ht]
+\centering
+\begin{tabular}{l|l}
+  \hline
+characteristic & Brazil \\ 
+  \hline
+.cifrao.n.cifrao. & 40 \\ 
+  .cifrao.Cum.sublinha.n.cifrao. & 11130 \\ 
+  .cifrao.TIP.cifrao. & 62498 \\ 
+  .barra.hat.abreChave..barra.alpha.fechaChave..sublinha..abreChave.obs.fechaChave. & 9.28 \\ 
+  .barra.hat.abreChave..barra.beta.fechaChave..sublinha..abreChave.obs.fechaChave. & 96.71 \\ 
+  .barra.hat.abreChave..barra.lambda.fechaChave..sublinha..abreChave.obs.fechaChave. & 1.21 \\ 
+  .cifrao.date.sublinha.0.cifrao. & 2020-02-26 \\ 
+  .cifrao.date.sublinha.m.cifrao. & 2020-04-17 \\ 
+  .cifrao.date.sublinha..abreChave.end.fechaChave..cifrao. & 2020-07-18 \\ 
+  RMSE & 144.66 \\ 
+  modellingTime & 1.02 \\ 
+   \hline
+\end{tabular}
+\caption{Architecture of the GenSA-based near-optimal  
+                                 model for each COVID-19 daily incidence time data taken into account (Brazil). The modelling and forecasting times are given in seconds.} 
+\label{tab:architecture_performance_tb}
+\end{table}

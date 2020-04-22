@@ -1,0 +1,50 @@
+% latex table generated in R 3.6.2 by xtable 1.8-4 package
+% Thu Apr 16 16:52:52 2020
+\begin{table}[ht]
+\centering
+\begin{tabular}{l|l|l|l}
+  \hline
+ & characteristic & Albania & Andorra \\ 
+  \hline
+trainingPercentual & trainingPercentual & 1 & 1 \\ 
+  forecastingTimeHorizon & forecastingTimeHorizon & 600 & 600 \\ 
+  GSA.max.call & GSA.max.call & 2e+04 & 2e+04 \\ 
+  GSA.max.time & GSA.max.time & 600 & 600 \\ 
+  GSA.maxit & GSA.maxit & 1e+06 & 1e+06 \\ 
+  GSA.temperature & GSA.temperature & 1e+06 & 1e+06 \\ 
+  GSA.nb.stop.improvement & GSA.nb.stop.improvement & 20 & 20 \\ 
+  ROOT & ROOT & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/ \\ 
+  EPIDEMICS\_CODES\_PATH & EPIDEMICS\_CODES\_PATH & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/ \\ 
+  DATA\_PATH & DATA\_PATH & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Data/2020-04-16/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Data/2020-04-16/ \\ 
+  RESULTS\_PATH & RESULTS\_PATH & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Results/2020-04-16/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Results/2020-04-16/ \\ 
+  DATA\_LABELS & DATA\_LABELS & Albania & Andorra \\ 
+   \hline
+\end{tabular}
+\caption{Tuning parameters of the COVID-19 daily incidence models for each country taken into account (Albania, Andorra).} 
+\label{tab:tuningParameters_tb}
+\end{table}
+% latex table generated in R 3.6.2 by xtable 1.8-4 package
+% Thu Apr 16 16:52:52 2020
+\begin{table}[ht]
+\centering
+\begin{tabular}{l|l|l}
+  \hline
+characteristic & Albania & Andorra \\ 
+  \hline
+.cifrao.n.cifrao. & 38 & 45 \\ 
+  .cifrao.Cum.sublinha.n.cifrao. & 494 & 673 \\ 
+  .cifrao.TIP.cifrao. & 684 & 1648747 \\ 
+  .barra.hat.abreChave..barra.alpha.fechaChave..sublinha..abreChave.obs.fechaChave. & 2.89 & 1.01 \\ 
+  .barra.hat.abreChave..barra.beta.fechaChave..sublinha..abreChave.obs.fechaChave. & 78.54 & 11.2 \\ 
+  .barra.hat.abreChave..barra.lambda.fechaChave..sublinha..abreChave.obs.fechaChave. & 2.88 & 21.58 \\ 
+  .cifrao.date.sublinha.0.cifrao. & 2020-03-09 & 2020-03-02 \\ 
+  .cifrao.date.sublinha.m.cifrao. & 2020-03-29, 2020-03-30, 2020-03-31, 2020-04-01, 2020-04-02, 2020-04-03, 2020-04-04 & 2021-01-08, 2021-01-09 \\ 
+  .cifrao.date.sublinha..abreChave.end.fechaChave..cifrao. & 2020-06-01 & 2021-08-31 \\ 
+  RMSE & 5.92 & 14.29 \\ 
+  modellingTime & 1.01 & 1.1 \\ 
+   \hline
+\end{tabular}
+\caption{Architecture of the GenSA-based near-optimal  
+                                 model for each COVID-19 daily incidence time data taken into account (Albania, Andorra). The modelling and forecasting times are given in seconds.} 
+\label{tab:architecture_performance_tb}
+\end{table}

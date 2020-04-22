@@ -1,0 +1,29 @@
+% latex table generated in R 3.6.2 by xtable 1.8-4 package
+% Sun Apr 05 16:41:19 2020
+\begin{table}[ht]
+\centering
+\begin{tabular}{l|l|l|l|l|l|l|l|l|l|l|l}
+  \hline
+trainingPercentual & forecastingTimeHorizon & GSA.max.call & GSA.max.time & GSA.maxit & GSA.temperature & GSA.nb.stop.improvement & ROOT & EPIDEMICS\_CODES\_PATH & DATA\_PATH & RESULTS\_PATH & DATA\_LABELS \\ 
+  \hline
+0.405 & 600.000 & 20000.000 & 600.000 & 1000000.000 & 1000000.000 & 20.000 & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Data/2020-04-05/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Results/2020-04-05/ & Korea, South\_n\_30 \\ 
+   \hline
+\end{tabular}
+\caption{Tuning parameters of the COVID-19 daily incidence models of Korea, South_n_30.} 
+\label{tab:Korea, South_n_30_tuningParameter_tb}
+\end{table}
+% latex table generated in R 3.6.2 by xtable 1.8-4 package
+% Sun Apr 05 16:41:19 2020
+\begin{table}[ht]
+\centering
+\begin{tabular}{l|l|l|l|l|l|l|l|l|l|l|l}
+  \hline
+1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\ 
+  \hline
+characteristic & .cifrao.n.cifrao. & .cifrao.Cum.sublinha.n.cifrao. & .cifrao.TIP.cifrao. & .barra.hat.abreChave..barra.alpha.fechaChave..sublinha..abreChave.obs.fechaChave. & .barra.hat.abreChave..barra.beta.fechaChave..sublinha..abreChave.obs.fechaChave. & .barra.hat.abreChave..barra.lambda.fechaChave..sublinha..abreChave.obs.fechaChave. & .cifrao.date.sublinha.0.cifrao. & .cifrao.date.sublinha.m.cifrao. & .cifrao.date.sublinha..abreChave.end.fechaChave..cifrao. & RMSE & modellingTime \\ 
+  value & 30 & 104 & 9888569 & 15.43 & 82.19 & 3.51 & 2020-01-22 & 2020-04-30 & 2020-09-24 & 8.89 & 1.17 \\ 
+   \hline
+\end{tabular}
+\caption{Architecture of the near-optimal model fitted to COVID-19 daily incidence of Korea, South_n_30 via 	exttt{GenSA} package of 	exttt{R}. The modelling and forecasting times are given in seconds.} 
+\label{tab:Korea, South_n_30_model_tb}
+\end{table}

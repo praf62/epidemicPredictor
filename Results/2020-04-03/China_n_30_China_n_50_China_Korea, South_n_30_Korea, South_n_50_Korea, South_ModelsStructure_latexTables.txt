@@ -1,0 +1,58 @@
+% latex table generated in R 3.6.2 by xtable 1.8-4 package
+% Fri Apr 03 14:35:43 2020
+\begin{table}[ht]
+\centering
+\begin{tabular}{l|l|l|l|l|l|l|l}
+  \hline
+ & characteristic & China\_n\_30 & China\_n\_50 & China & Korea, South\_n\_30 & Korea, South\_n\_50 & Korea, South \\ 
+  \hline
+trainingPercentual & trainingPercentual & 0.4167 & 0.6944 & 0.95 & 0.4167 & 0.6944 & 0.95 \\ 
+  forecastingTimeHorizon & forecastingTimeHorizon & 600 & 600 & 600 & 600 & 600 & 600 \\ 
+  GSA.max.call & GSA.max.call & 2e+04 & 2e+04 & 2e+04 & 2e+04 & 2e+04 & 2e+04 \\ 
+  GSA.max.time & GSA.max.time & 600 & 600 & 600 & 600 & 600 & 600 \\ 
+  GSA.maxit & GSA.maxit & 1e+06 & 1e+06 & 1e+06 & 1e+06 & 1e+06 & 1e+06 \\ 
+  GSA.temperature & GSA.temperature & 1e+06 & 1e+06 & 1e+06 & 1e+06 & 1e+06 & 1e+06 \\ 
+  GSA.nb.stop.improvement & GSA.nb.stop.improvement & 20 & 20 & 20 & 20 & 20 & 20 \\ 
+  ROOT & ROOT & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/ \\ 
+  EPIDEMICS\_CODES\_PATH & EPIDEMICS\_CODES\_PATH & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/ \\ 
+  DATA\_PATH & DATA\_PATH & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Data/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Data/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Data/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Data/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Data/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Data/ \\ 
+  RESULTS\_PATH & RESULTS\_PATH & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Results/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Results/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Results/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Results/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Results/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Results/ \\ 
+  DATA\_LABELS & DATA\_LABELS & China\_n\_30 & China\_n\_50 & China & Korea, South\_n\_30 & Korea, South\_n\_50 & Korea, South \\ 
+   \hline
+\end{tabular}
+\caption{Tuning parameters of the Covid-19 daily incidence models for each country taken into account (China_n_30, China_n_50, China, Korea, South_n_30, Korea, South_n_50, Korea, South).} 
+\label{tab:tuningParameters_tb}
+\end{table}
+% latex table generated in R 3.6.2 by xtable 1.8-4 package
+% Fri Apr 03 14:35:43 2020
+\begin{table}[ht]
+\centering
+\begin{tabular}{l|l|l|l|l|l|l}
+  \hline
+characteristic & China\_n\_30 & China\_n\_50 & China & Korea, South\_n\_30 & Korea, South\_n\_50 & Korea, South \\ 
+  \hline
+\$n\$ & 30 & 50 & 68 & 30 & 50 & 68 \\ 
+  \$Cum\_n\$ & 75077 & 80921 & 82122 & 104 & 7755 & 9583 \\ 
+  \$TIP\$ & 126672 & 80925 & 89859 & 2949108 & 15963 & 12292 \\ 
+  $\backslash$hat\{$\backslash$alpha\}\_\{obs\} & 3 & 3 & 3.59 & 3.01 & 8.99 & 8.16 \\ 
+  $\backslash$hat\{$\backslash$beta\}\_\{obs\} & 48.98 & 83.29 & 99.03 & 9.22 & 100 & 99.27 \\ 
+  $\backslash$hat\{$\backslash$lambda\}\_\{obs\} & 1.99 & 2.05 & 0 & 8.13 & 3e-02 & 2e-02 \\ 
+  \$date\_0\$ & 2020-01-22 & 2020-01-22 & 2020-01-22 & 2020-01-22 & 2020-01-22 & 2020-01-22 \\ 
+  \$date\_m\$ & 2020-02-24 & 2020-02-11 & 2020-02-06 & 2020-10-04 & 2020-03-06, 2020-03-07 & 2020-03-02, 2020-03-03 \\ 
+  \$date\_\{end\}\$ & 2020-07-23 & 2020-05-19 & 2020-04-22 & 2021-07-25 & 2020-05-23 & 2020-05-16 \\ 
+  RMSE & 2107.67 & 2008.04 & 1635.44 & 233.59 & 130.39 & 141.58 \\ 
+  modellingTime & 3.32 & 3.29 & 3.63 & 3.18 & 3.53 & 3.77 \\ 
+   \hline
+\end{tabular}
+\caption{Architecture of the SA-based near-optimal  
+                                 model for each Covid-19 daily incidence time data taken into account (China_n_30, China_n_50, China, Korea, South_n_30, Korea, South_n_50, Korea, South). The modelling and forecasting times are given in seconds.} 
+\label{tab:architecture_performance_tb}
+\end{table}
+
+
+1. Perfil do consumidor de empresas de TIC;
+2. Perfil do empregado de empresas de TIC;
+3. Passo a passo (processo) para manutenção de startups de TIC;
+1. Perfil do consumidor de empresas de TIC;
+ e 
+

@@ -1,0 +1,29 @@
+% latex table generated in R 3.6.2 by xtable 1.8-4 package
+% Tue Apr 21 15:21:17 2020
+\begin{table}[ht]
+\centering
+\begin{tabular}{l|l|l|l|l|l|l|l|l|l|l|l}
+  \hline
+trainingPercentual & forecastingTimeHorizon & GSA.max.call & GSA.max.time & GSA.maxit & GSA.temperature & GSA.nb.stop.improvement & ROOT & EPIDEMICS\_CODES\_PATH & DATA\_PATH & RESULTS\_PATH & DATA\_LABELS \\ 
+  \hline
+1.000 & 600.000 & 20000.000 & 600.000 & 1000000.000 & 1000000.000 & 20.000 & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Data/2020-04-21/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Results/2020-04-21/ & MG \\ 
+   \hline
+\end{tabular}
+\caption{Tuning parameters of the COVID-19 daily incidence models of MG.} 
+\label{tab:MG_tuningParameter_tb}
+\end{table}
+% latex table generated in R 3.6.2 by xtable 1.8-4 package
+% Tue Apr 21 15:21:17 2020
+\begin{table}[ht]
+\centering
+\begin{tabular}{l|l|l|l|l|l|l|l|l|l|l|l}
+  \hline
+1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 11 & 12 \\ 
+  \hline
+characteristic & .cifrao.n.cifrao. & .cifrao.Cum.sublinha.n.cifrao. & .cifrao.TIP.cifrao. & .barra.hat.abreChave..barra.alpha.fechaChave..sublinha..abreChave.obs.fechaChave. & .barra.hat.abreChave..barra.beta.fechaChave..sublinha..abreChave.obs.fechaChave. & .barra.hat.abreChave..barra.lambda.fechaChave..sublinha..abreChave.obs.fechaChave. & .cifrao.date.sublinha.0.cifrao. & .cifrao.date.sublinha.m.cifrao. & .cifrao.date.sublinha..abreChave.end.fechaChave..cifrao. & RMSE & modellingTime \\ 
+  value & 44 & 1189 & 2260 & 4.64 & 73.95 & 2.69 & 2020-03-08 & 2020-04-14 & 2020-07-02 & 14.36 & 1.87 \\ 
+   \hline
+\end{tabular}
+\caption{Architecture of the near-optimal model fitted to COVID-19 daily incidence of MG via 	exttt{GenSA} package of 	exttt{R}. The modelling and forecasting times are given in seconds.} 
+\label{tab:MG_model_tb}
+\end{table}

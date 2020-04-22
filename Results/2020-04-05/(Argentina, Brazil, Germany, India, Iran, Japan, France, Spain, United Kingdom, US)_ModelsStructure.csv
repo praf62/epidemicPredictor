@@ -1,0 +1,12 @@
+characteristic;Característica;Argentina;Brazil;Germany;India;Iran;Japan;France;Spain;United Kingdom;US
+.cifrao.n.cifrao.;tamanho da série de treinamento do modelo;31;37;66;63;44;70;68;61;62;70
+.cifrao.Cum.sublinha.n.cifrao.;Incidência acumulada na série de treinamento;1133;8044;77872;1998;50468;1953;52827;104118;29865;188172
+.cifrao.TIP.cifrao.;Incidência acumulada prevista até o fim das contaminações;6304886;2943266;694693;9963198;188764;9909988;4120858;830246;1825359;4847520
+.barra.hat.abreChave..barra.alpha.fechaChave..sublinha..abreChave.obs.fechaChave.;parâmetro alpha do modelo;1.95;3.28;11.34;23.96;1.12;2.19;10.65;12.6;14.08;19.01
+.barra.hat.abreChave..barra.beta.fechaChave..sublinha..abreChave.obs.fechaChave.;parâmetro beta do modelo;10.62;63.74;91.17;86.39;97.34;7.54;68.78;90.81;92.99;90.26
+.barra.hat.abreChave..barra.lambda.fechaChave..sublinha..abreChave.obs.fechaChave.;parâmetro lambda do modelo;15.98;24.7;10.81;2.39;19.52;19.55;16.52;4.54;12.93;0
+.cifrao.date.sublinha.0.cifrao.;data de início de resgistros de casos;2020-03-03;2020-02-26;2020-01-27;2020-01-30;2020-02-19;2020-01-22;2020-01-24;2020-02-01;2020-01-31;2020-01-22
+.cifrao.date.sublinha.m.cifrao.;data de pico de resgistros de casos;2020-12-20;2020-06-17;2020-04-24;2020-06-10;2020-04-13;2021-02-05, 2021-02-06;2020-05-27;2020-04-21;2020-05-14;2020-05-02
+.cifrao.date.sublinha..abreChave.end.fechaChave..cifrao.;data de fim de resgistros de casos;2021-09-08;2020-12-16;2020-08-31;2020-10-29;2020-08-15;2021-08-28;2020-11-11;2020-08-22;2020-09-26;2020-09-09
+RMSE;erro médio do modelo de previsão;38.27;120.62;603.7;43.19;357.06;27.1;463.41;770.67;200.04;1017.86
+modellingTime;tempo de modelagem (em segundos);1.34;1.38;1.61;1.56;1.49;1.85;1.55;1.62;1.58;1.68

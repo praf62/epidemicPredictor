@@ -1,0 +1,50 @@
+% latex table generated in R 3.6.2 by xtable 1.8-4 package
+% Tue Apr 21 15:21:17 2020
+\begin{table}[ht]
+\centering
+\begin{tabular}{l|l|l|l|l|l|l|l|l|l|l|l|l|l|l|l}
+  \hline
+ & characteristic & PE & CE & SP & RJ & BA & MA & AM & DF & MG & AC & RR & RO & PR & SC \\ 
+  \hline
+trainingPercentual & trainingPercentual & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\ 
+  forecastingTimeHorizon & forecastingTimeHorizon & 600 & 600 & 600 & 600 & 600 & 600 & 600 & 600 & 600 & 600 & 600 & 600 & 600 & 600 \\ 
+  GSA.max.call & GSA.max.call & 2e+04 & 2e+04 & 2e+04 & 2e+04 & 2e+04 & 2e+04 & 2e+04 & 2e+04 & 2e+04 & 2e+04 & 2e+04 & 2e+04 & 2e+04 & 2e+04 \\ 
+  GSA.max.time & GSA.max.time & 600 & 600 & 600 & 600 & 600 & 600 & 600 & 600 & 600 & 600 & 600 & 600 & 600 & 600 \\ 
+  GSA.maxit & GSA.maxit & 1e+06 & 1e+06 & 1e+06 & 1e+06 & 1e+06 & 1e+06 & 1e+06 & 1e+06 & 1e+06 & 1e+06 & 1e+06 & 1e+06 & 1e+06 & 1e+06 \\ 
+  GSA.temperature & GSA.temperature & 1e+06 & 1e+06 & 1e+06 & 1e+06 & 1e+06 & 1e+06 & 1e+06 & 1e+06 & 1e+06 & 1e+06 & 1e+06 & 1e+06 & 1e+06 & 1e+06 \\ 
+  GSA.nb.stop.improvement & GSA.nb.stop.improvement & 20 & 20 & 20 & 20 & 20 & 20 & 20 & 20 & 20 & 20 & 20 & 20 & 20 & 20 \\ 
+  ROOT & ROOT & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/ \\ 
+  EPIDEMICS\_CODES\_PATH & EPIDEMICS\_CODES\_PATH & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/ \\ 
+  DATA\_PATH & DATA\_PATH & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Data/2020-04-21/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Data/2020-04-21/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Data/2020-04-21/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Data/2020-04-21/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Data/2020-04-21/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Data/2020-04-21/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Data/2020-04-21/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Data/2020-04-21/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Data/2020-04-21/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Data/2020-04-21/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Data/2020-04-21/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Data/2020-04-21/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Data/2020-04-21/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Data/2020-04-21/ \\ 
+  RESULTS\_PATH & RESULTS\_PATH & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Results/2020-04-21/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Results/2020-04-21/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Results/2020-04-21/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Results/2020-04-21/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Results/2020-04-21/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Results/2020-04-21/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Results/2020-04-21/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Results/2020-04-21/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Results/2020-04-21/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Results/2020-04-21/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Results/2020-04-21/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Results/2020-04-21/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Results/2020-04-21/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Results/2020-04-21/ \\ 
+  DATA\_LABELS & DATA\_LABELS & PE & CE & SP & RJ & BA & MA & AM & DF & MG & AC & RR & RO & PR & SC \\ 
+   \hline
+\end{tabular}
+\caption{Tuning parameters of the COVID-19 daily incidence models for each country taken into account (PE, CE, SP, RJ, BA, MA, AM, DF, MG, AC, RR, RO, PR, SC).} 
+\label{tab:tuningParameters_tb}
+\end{table}
+% latex table generated in R 3.6.2 by xtable 1.8-4 package
+% Tue Apr 21 15:21:17 2020
+\begin{table}[ht]
+\centering
+\begin{tabular}{l|l|l|l|l|l|l|l|l|l|l|l|l|l|l}
+  \hline
+characteristic & PE & CE & SP & RJ & BA & MA & AM & DF & MG & AC & RR & RO & PR & SC \\ 
+  \hline
+.cifrao.n.cifrao. & 40 & 35 & 55 & 47 & 46 & 31 & 37 & 45 & 44 & 33 & 30 & 32 & 40 & 39 \\ 
+  .cifrao.Cum.sublinha.n.cifrao. & 2690 & 3482 & 14580 & 4899 & 1341 & 1320 & 2160 & 872 & 1189 & 176 & 244 & 160 & 1007 & 1025 \\ 
+  .cifrao.TIP.cifrao. & 7974879 & 2861113 & 27396 & 10503 & 9438247 & 4184280 & 1992429 & 10136 & 2260 & 699647 & 1439 & 2361930 & 7948848 & 689020 \\ 
+  .barra.hat.abreChave..barra.alpha.fechaChave..sublinha..abreChave.obs.fechaChave. & 3.49 & 1.66 & 9.75 & 6.75 & 4.02 & 1.67 & 1.01 & 1.81 & 4.64 & 2.42 & 5.63 & 3.55 & 1.7 & 1.69 \\ 
+  .barra.hat.abreChave..barra.beta.fechaChave..sublinha..abreChave.obs.fechaChave. & 16.3 & 13.74 & 97.14 & 99.96 & 1.94 & 35.05 & 24.53 & 5.03 & 73.95 & 22.78 & 94.94 & 80.2 & 1.44 & 1.3 \\ 
+  .barra.hat.abreChave..barra.lambda.fechaChave..sublinha..abreChave.obs.fechaChave. & 13.98 & 14.93 & 6e-02 & 4.69 & 6e-02 & 25.36 & 22.69 & 0.16 & 2.69 & 20.24 & 5.07 & 38.33 & 10.48 & 4.8 \\ 
+  .cifrao.date.sublinha.0.cifrao. & 2020-03-12 & 2020-03-17 & 2020-02-26 & 2020-03-05 & 2020-03-06 & 2020-03-21 & 2020-03-15 & 2020-03-07 & 2020-03-08 & 2020-03-19 & 2020-03-22 & 2020-03-20 & 2020-03-12 & 2020-03-13 \\ 
+  .cifrao.date.sublinha.m.cifrao. & 2020-10-28 & 2020-11-07 & 2020-04-16 & 2020-04-17, 2020-04-18, 2020-04-19 & 2021-06-07, 2021-06-08 & 2020-09-05 & 2020-09-26, 2020-09-27 & 2020-06-04, 2020-06-05, 2020-06-06, 2020-06-07, 2020-06-08, 2020-06-09, 2020-06-10, 2020-06-11, 2020-06-12, 2020-06-13, 2020-06-14, 2020-06-15, 2020-06-16, 2020-06-17, 2020-06-18, 2020-06-19, 2020-06-20, 2020-06-21, 2020-06-22, 2020-06-23, 2020-06-24, 2020-06-25, 2020-06-26, 2020-06-27, 2020-06-28, 2020-06-29, 2020-06-30, 2020-07-01, 2020-07-02, 2020-07-03, 2020-07-04, 2020-07-05, 2020-07-06, 2020-07-07, 2020-07-08, 2020-07-09, 2020-07-10 & 2020-04-14 & 2020-10-12, 2020-10-13, 2020-10-14 & 2020-04-29, 2020-04-30, 2020-05-01, 2020-05-02, 2020-05-03, 2020-05-04, 2020-05-05 & 2020-07-26 & 2021-09-25 & 2021-09-17, 2021-09-18 \\ 
+  .cifrao.date.sublinha..abreChave.end.fechaChave..cifrao. & 2021-07-30 & 2021-08-14 & 2020-07-09 & 2020-07-09 & 2021-10-26 & 2021-04-24 & 2021-06-01 & 2021-07-04 & 2020-07-02 & 2021-06-07 & 2020-07-08 & 2021-01-03 & 2021-11-01 & 2021-11-02 \\ 
+  RMSE & 29.43 & 45.91 & 245.56 & 50.88 & 19.18 & 28.52 & 37.34 & 11.47 & 14.36 & 4.3 & 6.16 & 3.46 & 16.87 & 27.82 \\ 
+  modellingTime & 2 & 1.76 & 1.99 & 1.9 & 1.75 & 1.84 & 1.65 & 1.89 & 1.87 & 1.68 & 1.73 & 1.63 & 1.86 & 1.87 \\ 
+   \hline
+\end{tabular}
+\caption{Architecture of the GenSA-based near-optimal  
+                                 model for each COVID-19 daily incidence time data taken into account (PE, CE, SP, RJ, BA, MA, AM, DF, MG, AC, RR, RO, PR, SC). The modelling and forecasting times are given in seconds.} 
+\label{tab:architecture_performance_tb}
+\end{table}

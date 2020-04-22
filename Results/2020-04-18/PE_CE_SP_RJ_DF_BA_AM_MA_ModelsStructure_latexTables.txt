@@ -1,0 +1,50 @@
+% latex table generated in R 3.6.2 by xtable 1.8-4 package
+% Sat Apr 18 11:40:02 2020
+\begin{table}[ht]
+\centering
+\begin{tabular}{l|l|l|l|l|l|l|l|l|l}
+  \hline
+ & characteristic & PE & CE & SP & RJ & DF & BA & AM & MA \\ 
+  \hline
+trainingPercentual & trainingPercentual & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\ 
+  forecastingTimeHorizon & forecastingTimeHorizon & 600 & 600 & 600 & 600 & 600 & 600 & 600 & 600 \\ 
+  GSA.max.call & GSA.max.call & 2e+04 & 2e+04 & 2e+04 & 2e+04 & 2e+04 & 2e+04 & 2e+04 & 2e+04 \\ 
+  GSA.max.time & GSA.max.time & 600 & 600 & 600 & 600 & 600 & 600 & 600 & 600 \\ 
+  GSA.maxit & GSA.maxit & 1e+06 & 1e+06 & 1e+06 & 1e+06 & 1e+06 & 1e+06 & 1e+06 & 1e+06 \\ 
+  GSA.temperature & GSA.temperature & 1e+06 & 1e+06 & 1e+06 & 1e+06 & 1e+06 & 1e+06 & 1e+06 & 1e+06 \\ 
+  GSA.nb.stop.improvement & GSA.nb.stop.improvement & 20 & 20 & 20 & 20 & 20 & 20 & 20 & 20 \\ 
+  ROOT & ROOT & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/ \\ 
+  EPIDEMICS\_CODES\_PATH & EPIDEMICS\_CODES\_PATH & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/ \\ 
+  DATA\_PATH & DATA\_PATH & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Data/2020-04-18/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Data/2020-04-18/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Data/2020-04-18/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Data/2020-04-18/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Data/2020-04-18/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Data/2020-04-18/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Data/2020-04-18/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Data/2020-04-18/ \\ 
+  RESULTS\_PATH & RESULTS\_PATH & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Results/2020-04-18/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Results/2020-04-18/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Results/2020-04-18/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Results/2020-04-18/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Results/2020-04-18/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Results/2020-04-18/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Results/2020-04-18/ & G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/Epidemics/Results/2020-04-18/ \\ 
+  DATA\_LABELS & DATA\_LABELS & PE & CE & SP & RJ & DF & BA & AM & MA \\ 
+   \hline
+\end{tabular}
+\caption{Tuning parameters of the COVID-19 daily incidence models for each country taken into account (PE, CE, SP, RJ, DF, BA, AM, MA).} 
+\label{tab:tuningParameters_tb}
+\end{table}
+% latex table generated in R 3.6.2 by xtable 1.8-4 package
+% Sat Apr 18 11:40:02 2020
+\begin{table}[ht]
+\centering
+\begin{tabular}{l|l|l|l|l|l|l|l|l}
+  \hline
+characteristic & PE & CE & SP & RJ & DF & BA & AM & MA \\ 
+  \hline
+.cifrao.n.cifrao. & 37 & 32 & 52 & 44 & 42 & 43 & 34 & 28 \\ 
+  .cifrao.Cum.sublinha.n.cifrao. & 2006 & 2684 & 12841 & 4349 & 746 & 1059 & 1809 & 797 \\ 
+  .cifrao.TIP.cifrao. & 4853754 & 2187548 & 4592563 & 6606475 & 6345692 & 8826956 & 8708151 & 2531277 \\ 
+  .barra.hat.abreChave..barra.alpha.fechaChave..sublinha..abreChave.obs.fechaChave. & 1.06 & 2.64 & 3.18 & 1.51 & 1.27 & 3 & 1 & 2.21 \\ 
+  .barra.hat.abreChave..barra.beta.fechaChave..sublinha..abreChave.obs.fechaChave. & 93.54 & 5.88 & 14.74 & 16.88 & 1.32 & 8.85 & 22.61 & 34.5 \\ 
+  .barra.hat.abreChave..barra.lambda.fechaChave..sublinha..abreChave.obs.fechaChave. & 46.27 & 5.53 & 11.38 & 20.52 & 12.9 & 14.22 & 25.66 & 22.33 \\ 
+  .cifrao.date.sublinha.0.cifrao. & 2020-03-12 & 2020-03-17 & 2020-02-26 & 2020-03-05 & 2020-03-07 & 2020-03-06 & 2020-03-15 & 2020-03-21 \\ 
+  .cifrao.date.sublinha.m.cifrao. & 2020-07-09 & 2020-12-29, 2020-12-30 & 2020-10-01 & 2020-11-04 & 2021-10-02 & 2021-01-26 & 2020-10-25, 2020-10-26 & 2020-08-29 \\ 
+  .cifrao.date.sublinha..abreChave.end.fechaChave..cifrao. & 2020-12-13 & 2021-10-18 & 2021-07-15 & 2021-07-25 & 2021-10-27 & 2021-09-28 & 2021-07-05 & 2021-04-15 \\ 
+  RMSE & 27.17 & 43.42 & 232.84 & 44.34 & 10.69 & 16.02 & 34.99 & 18.55 \\ 
+  modellingTime & 1.06 & 0.98 & 1.16 & 1.13 & 1.03 & 1.05 & 0.96 & 0.77 \\ 
+   \hline
+\end{tabular}
+\caption{Architecture of the GenSA-based near-optimal  
+                                 model for each COVID-19 daily incidence time data taken into account (PE, CE, SP, RJ, DF, BA, AM, MA). The modelling and forecasting times are given in seconds.} 
+\label{tab:architecture_performance_tb}
+\end{table}
