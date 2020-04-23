@@ -1,8 +1,24 @@
+getSourceMode <<- function(isToDebug=FALSE){
+  retFunction = NULL
+  if(isToDebug){
+    retFunction = function(file, echo=TRUE){
+      ret = debugSource(file=file, echo=echo)
+      return(ret)
+    }
+  }
+  else {
+    retFunction = function(file){
+      ret = source(file=file)
+      return(ret)
+    }
+  }
+  return(retFunction)
+}
 todayDate <<- as.character(Sys.Date())
-#isToDebug <<- FALSE
+isToDebug <<- FALSE
 sourceMode <<- getSourceMode(isToDebug)
 tuningParameters  <<- NULL
-loadModellingParameters = function(pTrainingPercentual = .95
+loadModellingParameters = function(pTrainingPercentual = 1
                                    , pForecastingTimeHorizon = 600
                                    , pGenSA = list(max.call = 2e+4#6
                                                    , max.time=600, maxit = 1e+6
@@ -53,8 +69,8 @@ loadModellingParameters = function(pTrainingPercentual = .95
   }
   
   #LOADING PACKAGES
-  sourceMode(file=paste(pROOT, "Auxiliary/Auxiliar.R", sep=""))#, echo=TRUE)
-  sourceMode(file=paste(pROOT, "Epidemics/OptimalIncidenceModel.R", sep=""))#, echo=TRUE)
+  sourceMode(file=paste(pEPIDEMICS_CODES_PATH, "Auxiliar.R", sep=""))#, echo=TRUE)
+  sourceMode(file=paste(pEPIDEMICS_CODES_PATH, "OptimalIncidenceModel.R", sep=""))#, echo=TRUE)
   #sourceMode(file=paste(pROOT, "/Auxiliary/PerformanceMetrics.R", sep=""))#, echo=TRUE)
   loadPackages()#c("neuralnet","forecast", "GenSA", "nortest", "copula", "moments", "distr","fGarch", "tdata"), echo=TRUE)
 }
@@ -83,6 +99,7 @@ saveCovidSeries = function(DATA_LABELS =
   data = NULL; col_names = NULL; dates = NULL; seriesSize = NULL; nCols = NULL
   if(folderExists==FALSE){
     dir.create(folder)
+    dir.create(RESULTS_PATH)
     jhu_url <- paste("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv", sep = "")
     loadPackages("RCurl")
     url = getURL(jhu_url)
@@ -125,27 +142,6 @@ saveCovidSeries = function(DATA_LABELS =
       }
     }
   }
-  #View(data)
-  trash = function(){ 
-    loadPackages("coronavirus")
-    data(coronavirus)
-    #View(coronavirus)
-    countires = names(table(coronavirus$Country.Region))
-    loadPackages("tidyverse")
-    data <- read.csv(jhu_url)  %>% 
-      rename(province = "Province/State", country_region = "Country/Region") %>% 
-      pivot_longer(-c(province, country_region, Lat, Long), names_to = "Date", values_to = "cumulative_cases") %>% 
-      # adjust JHU dates back one day to reflect US time, more or
-      # less
-      mutate(Date = mdy(Date) - days(1)) %>% filter(country_region == 
-                                                      "US") %>% arrange(province, Date) %>% group_by(province) %>% 
-      mutate(incident_cases = c(0, diff(cumulative_cases))) %>% 
-      ungroup() %>% select(-c(country_region, Lat, Long, cumulative_cases)) %>% 
-      filter(str_detect(province, "Diamond Princess", negate = TRUE))
-    data <- read.csv(jhu_url) 
-    
-  }
-  #View(alldataset)
 }
 performModelling = function(pDATA_LABELS = DATA_LABELS, ns=rep(NA, length(pDATA_LABELS))) {
   DATA_LABELS = pDATA_LABELS
@@ -699,41 +695,24 @@ getNewForecasts = function(DATA_LABELS){
   tuningParameters <<- BACKUP_tuningParameters
   return(all.data.list)
 }
-trash = function(){
-  # nCases = length(DATA_LABELS)#; 
-  # i=3
-  # for(i in 1:nCases){
-  #   print(paste("*****", DATA_LABELS[i], "*****"))
-  #   print(, Optimum$optCbObjs[[i]]$mvdc@margins)
-  #   print(, Optimum$optCbObjs[[i]]$mvdc@paramMargins)
-  # }
-  # 
-  # , Optimum$optMvObjs[[i]]$weigths
-  # plotAnnArchitecture(, Optimum$optAnnObjs[[1]]$neuralNetModel, DATA_LABELS[1])
-  # length(which(!is.na(, Optimum$optAnnObjs[[DATA_LABELS[1]]]$evaluatedANNs)))
-  # summary(, Optimum$optArimaObjs[[i]])
-  # summary(, Optimum$optEtsObjs[[i]])
-  # , Optimum$optCAnnObjs[[DATA_LABELS[i]]]$nnParameters
-}
 
 # #FUNCTIONS USAGE
-computeMainCases = function(pDATA_LABELS =
-                              c("Argentina", "Brazil", "China", "Germany", "India", "Iran", "Italy", "Japan", "France"
-                                , "Korea, South", "Spain", "United Kingdom", "US")){ 
+computeMainCases = function(pROOT = NULL       #PRAF, 
+  , pDATA_LABELS = DATA_LABES){ 
+  ROOT = ifelse(is.null(pROOT), "./", pROOT)
   loadModellingParameters(
-    pROOT = "G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/"       #PRAF
-    , pEPIDEMICS_CODES_PATH = paste(ROOT, "Epidemics/", sep="")
+    pROOT = ROOT
+    , pEPIDEMICS_CODES_PATH = ROOT
     , pDATA_PATH = paste(EPIDEMICS_CODES_PATH, "Data/", todayDate, "/", sep="")
     , pRESULTS_PATH = paste(EPIDEMICS_CODES_PATH, "Results/", todayDate, "/", sep="")
-    , pDATA_LABELS = pDATA_LABELS#, pTrainingPercentual =30
-    #c("China", "Korea, South")  #, pTrainingPercentual =30
-  )
-  # removeSavedObjects(DATA_LABELS = c("CO2"))
-  saveCovidSeries()
-  performModelling()
-  #computeModelsResults(DATA_LABELS = pDATA_LABELS )#
+    , pDATA_LABELS = pDATA_LABELS  )
+  saveCovidSeries(pDATA_LABELS)
+  performModelling(pDATA_LABELS)
+  computeModelsResults(DATA_LABELS = pDATA_LABELS )#
 }
-#computeMainCases()
+ROOT = NULL; #"G:/Meu Drive/UFCA/Pesquisa/SOFTWARE/IntegratedCodes/RCodes/"
+DATA_LABELS = c("US", "Argentina", "Brazil", "China")
+computeMainCases(pDATA_LABELS = DATA_LABELS)
 computeAlternativeCases = function(pDATA_LABELS=DATA_LABELS){
   ns = c(27, 34)
   DATA_LABELS = NULL
