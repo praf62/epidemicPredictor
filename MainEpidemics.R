@@ -18,16 +18,17 @@ todayDate <<- as.character(Sys.Date())
 isToDebug <<- FALSE
 sourceMode <<- getSourceMode(isToDebug)
 tuningParameters  <<- NULL
-loadModellingParameters = function(pTrainingPercentual = 1
+setParametersTuning = function(pTrainingPercentual = 1
                                    , pForecastingTimeHorizon = 600
                                    , pGenSA = list(max.call = 2e+4#6
                                                    , max.time=600, maxit = 1e+6
                                                    , temperature = 1e+6, nb.stop.improvement = 20)
-                                   , pROOT = "G:/Meu Drive/UFCA/Pesquisa/MESOR/Codes/"
-                                   , pEPIDEMICS_CODES_PATH = NULL
-                                   , pDATA_PATH = NULL
-                                   , pRESULTS_PATH = NULL
-                                   , pDATA_LABELS, pDATA_NAMES=NULL){
+                               , pDATA_LABELS
+                               , pROOT = "./"
+                                   , pEPIDEMICS_CODES_PATH = pROOT
+                                   , pDATA_PATH = paste(pEPIDEMICS_CODES_PATH, "Data/", todayDate, "/", sep="")
+                                   , pRESULTS_PATH = paste(pEPIDEMICS_CODES_PATH, "Results/", todayDate, "/", sep="")
+                                   , pDATA_NAMES=NULL){
   options(digits = 4, scipen = -2)
   GSA <<- pGenSA
   libPaths = .libPaths(); destDir = libPaths[1]#length(libPaths)];
@@ -75,9 +76,11 @@ loadModellingParameters = function(pTrainingPercentual = 1
   loadPackages()#c("neuralnet","forecast", "GenSA", "nortest", "copula", "moments", "distr","fGarch", "tdata"), echo=TRUE)
 }
 
-saveCovidSeries = function(DATA_LABELS =
+saveCovidSeries = function(URL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv" 
+                          , DATA_LABELS =
                              c("Argentina", "Brazil", "China", "Germany", "India", "Iran", "Italy", "Japan", "France"
                                , "Korea, South", "Spain","United Kingdom", "US")){
+  jhu_url = URL
   saveCountryData = function(contry_i){
     data_i = data[data$Country.Region==country_i,]; #View(data_i, title = country_i)
     cumulative_i = as.integer(lapply(data_i[, col_names[5:nCols]], sum))
@@ -100,7 +103,6 @@ saveCovidSeries = function(DATA_LABELS =
   if(folderExists==FALSE){
     dir.create(folder)
     dir.create(RESULTS_PATH)
-    jhu_url <- paste("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv", sep = "")
     loadPackages("RCurl")
     url = getURL(jhu_url)
     data <- read.csv (text = url)
@@ -125,7 +127,6 @@ saveCovidSeries = function(DATA_LABELS =
       fileExists = file.exists(fileName)
       if(fileExists == FALSE){
         if(is.null(data)){
-          jhu_url <- paste("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv", sep = "")
           loadPackages("RCurl")
           url = getURL(jhu_url)
           data <- read.csv (text = url)
@@ -396,14 +397,14 @@ computeModelsResults = function(DATA_LABELS, isToExportForecastsTable=FALSE
     #              "shape1", "shape2", "ncp"
     #            , "totalIncidencePrediction", "training.series.totalCases", "training.series.size", "forecastingTimeHorizon"
     #            , "start.incidence.date", "mode.incidence.date", "end.incidence.date"
-    #            , "RMSE", "modellingTime", "forecastingTime"
+    #            , "RMSE", "modelling.time", "forecastingTime"
     # )
     labels = c(#"Distribution", "meanlog", "sdlog", "mean", "sd", "skewness", "shape", "scale", 
-      ".cifrao.n.cifrao.", ".cifrao.Cum.sublinha.n.cifrao."
-      , ".cifrao.TIP.cifrao.", ".barra.hat.abreChave..barra.alpha.fechaChave..sublinha..abreChave.obs.fechaChave.", ".barra.hat.abreChave..barra.beta.fechaChave..sublinha..abreChave.obs.fechaChave.", ".barra.hat.abreChave..barra.lambda.fechaChave..sublinha..abreChave.obs.fechaChave."
-      , ".cifrao.date.sublinha.0.cifrao." , ".cifrao.date.sublinha.m.cifrao.", ".cifrao.date.sublinha..abreChave.end.fechaChave..cifrao."
+      "n", "Cum.n"
+      , "TIP", "alpha", "beta", "lambda"
+      , "date.0" , "date.m", "date.end"
       , "RMSE"
-      , "modellingTime")
+      , "modelling.time")
     tb = cbind(labels)
     #tuningParameters_labels = names(BACKUP_tuningParameters[[1]])
     tuningParameters_tb = NULL
@@ -445,17 +446,17 @@ computeModelsResults = function(DATA_LABELS, isToExportForecastsTable=FALSE
       # opt_i$modelParameters[["shape"]]=ifelse(dist!="weibull", NA, round(opt_i$modelParameters[["shape"]], nDec))
       # opt_i$modelParameters[["scale"]]=ifelse(dist!="weibull", NA, round(opt_i$modelParameters[["scale"]], nDec))
       mp = list()
-      mp[[".cifrao.n.cifrao."]] =round(opt_i$modelParameters[["training.series.size"]], 0)
-      mp[[".cifrao.Cum.sublinha.n.cifrao."]]=round(opt_i$modelParameters[["training.series.totalCases"]], 0)
-      mp[[".cifrao.TIP.cifrao."]]=round(opt_i$modelParameters[["totalIncidencePrediction"]], 0)
-      mp[[".barra.hat.abreChave..barra.alpha.fechaChave..sublinha..abreChave.obs.fechaChave."]]=ifelse(dist!="beta", NA, round(opt_i$modelParameters[["shape1"]], nDec))
-      mp[[".barra.hat.abreChave..barra.beta.fechaChave..sublinha..abreChave.obs.fechaChave."]]=ifelse(dist!="beta", NA, round(opt_i$modelParameters[["shape2"]], nDec))
-      mp[[".barra.hat.abreChave..barra.lambda.fechaChave..sublinha..abreChave.obs.fechaChave."]]=ifelse(dist!="beta", NA, round(opt_i$modelParameters[["ncp"]], nDec))      
-      mp[[".cifrao.date.sublinha.0.cifrao."]]=opt_i$modelParameters[["start.incidence.date"]]
-      mp[[".cifrao.date.sublinha.m.cifrao."]]=opt_i$modelParameters[["mode.incidence.date"]]
-      mp[[".cifrao.date.sublinha..abreChave.end.fechaChave..cifrao."]]=opt_i$modelParameters[["end.incidence.date"]]
+      mp[["n"]] =round(opt_i$modelParameters[["training.series.size"]], 0)
+      mp[["Cum.n"]]=round(opt_i$modelParameters[["training.series.totalCases"]], 0)
+      mp[["TIP"]]=round(opt_i$modelParameters[["totalIncidencePrediction"]], 0)
+      mp[["alpha"]]=ifelse(dist!="beta", NA, round(opt_i$modelParameters[["shape1"]], nDec))
+      mp[["beta"]]=ifelse(dist!="beta", NA, round(opt_i$modelParameters[["shape2"]], nDec))
+      mp[["lambda"]]=ifelse(dist!="beta", NA, round(opt_i$modelParameters[["ncp"]], nDec))      
+      mp[["date.0"]]=opt_i$modelParameters[["start.incidence.date"]]
+      mp[["date.m"]]=opt_i$modelParameters[["mode.incidence.date"]]
+      mp[["date.end"]]=opt_i$modelParameters[["end.incidence.date"]]
       mp[["RMSE"]] = round(opt_i$model$RMSE, nDec)
-      mp[["modellingTime"]] = round(opt_i$modellingTime, nDec)
+      mp[["modelling.time"]] = round(opt_i$modelling.time, nDec)
       tb = cbind(tb, unlist(mp, use.names = FALSE))
         
         #SINGLE MODEL LATEX TABLE
@@ -695,26 +696,7 @@ getNewForecasts = function(DATA_LABELS){
   tuningParameters <<- BACKUP_tuningParameters
   return(all.data.list)
 }
-
-# #FUNCTIONS USAGE
-computeMainCases = function(pROOT = NULL       #PRAF, 
-  , pDATA_LABELS = DATA_LABES){ 
-  ROOT = ifelse(is.null(pROOT), "./", pROOT)
-  loadModellingParameters(
-    pROOT = ROOT
-    , pEPIDEMICS_CODES_PATH = ROOT
-    , pDATA_PATH = paste(EPIDEMICS_CODES_PATH, "Data/", todayDate, "/", sep="")
-    , pRESULTS_PATH = paste(EPIDEMICS_CODES_PATH, "Results/", todayDate, "/", sep="")
-    , pDATA_LABELS = pDATA_LABELS  )
-  saveCovidSeries(pDATA_LABELS)
-  performModelling(pDATA_LABELS)
-  computeModelsResults(DATA_LABELS = pDATA_LABELS )#
-}
-ROOT = NULL; #"G:/Meu Drive/UFCA/Pesquisa/SOFTWARE/IntegratedCodes/RCodes/"
-DATA_LABELS = c("US", "Argentina", "Brazil", "China")
-computeMainCases(pDATA_LABELS = DATA_LABELS)
-computeAlternativeCases = function(pDATA_LABELS=DATA_LABELS){
-  ns = c(27, 34)
+computeAlternativeCases = function(pDATA_LABELS=DATA_LABELS, ns = c(27, 34)){
   DATA_LABELS = NULL
   CASE_DATA_LABELS = NULL
   for(i in 1:length(pDATA_LABELS)){
@@ -734,5 +716,10 @@ computeAlternativeCases = function(pDATA_LABELS=DATA_LABELS){
   performModelling(pDATA_LABELS= CASE_DATA_LABELS, ns = ns)#;c("China", "Korea, South"), p_n = n)
   computeModelsResults(DATA_LABELS = DATA_LABELS)#
 }
+# #FUNCTIONS USAGE
+DATA_LABELS = c("US", "Argentina", "Brazil", "China", "Canada")
+setParametersTuning(pDATA_LABELS = DATA_LABELS)
+saveCovidSeries(DATA_LABELS)
+performModelling(DATA_LABELS)
+computeModelsResults(DATA_LABELS = DATA_LABELS )#
 # computeAlternativeCases(pDATA_LABELS = c("China", "Korea, South"))
-# Sys.Date ()
