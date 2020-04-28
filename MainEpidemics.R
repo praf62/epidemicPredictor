@@ -76,7 +76,7 @@ setParametersTuning = function(pTrainingPercentual = 1
   loadPackages()#c("neuralnet","forecast", "GenSA", "nortest", "copula", "moments", "distr","fGarch", "tdata"), echo=TRUE)
 }
 
-saveCovidSeries = function(URL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv" 
+getTS = function(URL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv" 
                           , DATA_LABELS =
                              c("Argentina", "Brazil", "China", "Germany", "India", "Iran", "Italy", "Japan", "France"
                                , "Korea, South", "Spain","United Kingdom", "US")){
@@ -144,7 +144,7 @@ saveCovidSeries = function(URL = "https://raw.githubusercontent.com/CSSEGISandDa
     }
   }
 }
-performModelling = function(pDATA_LABELS = DATA_LABELS, ns=rep(NA, length(pDATA_LABELS))) {
+fitModel = function(pDATA_LABELS = DATA_LABELS, ns=rep(NA, length(pDATA_LABELS))) {
   DATA_LABELS = pDATA_LABELS
   dataNm_i <<- NULL
   nCases = length(DATA_LABELS)#; i=1
@@ -719,7 +719,7 @@ computeAlternativeCases = function(pDATA_LABELS=DATA_LABELS, ns = c(27, 34)){
 # #FUNCTIONS USAGE
 DATA_LABELS = c("US", "Argentina", "Brazil", "China", "Canada")
 setParametersTuning(pDATA_LABELS = DATA_LABELS)
-saveCovidSeries(DATA_LABELS)
-performModelling(DATA_LABELS)
+getTS(DATA_LABELS)
+fitModel(DATA_LABELS)
 computeModelsResults(DATA_LABELS = DATA_LABELS )#
 # computeAlternativeCases(pDATA_LABELS = c("China", "Korea, South"))
