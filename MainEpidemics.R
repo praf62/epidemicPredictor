@@ -15,14 +15,14 @@ getSourceMode <<- function(isToDebug=FALSE){
   return(retFunction)
 }
 todayDate <<- as.character(Sys.Date())
-isToDebug <<- FALSE
+isToDebug <<- TRUE
 sourceMode <<- getSourceMode(isToDebug)
 tuningParameters  <<- NULL
 setParametersTuning = function(pTrainingPercentual = 1
-                                   , pForecastingTimeHorizon = 600
-                                   , pGenSA = list(max.call = 2e+4#6
-                                                   , max.time=600, maxit = 1e+6
-                                                   , temperature = 1e+6, nb.stop.improvement = 20)
+                               , pForecastingTimeHorizon = 600
+                               , pGenSA = list(max.call = 3E+04
+                                               , max.time=6e+2, maxit = 5e+3
+                                               , temperature = 1e+8, nb.stop.improvement = 20) 
                                , pDATA_LABELS
                                , pROOT = "./"
                                    , pEPIDEMICS_CODES_PATH = pROOT
@@ -71,7 +71,7 @@ setParametersTuning = function(pTrainingPercentual = 1
   
   #LOADING PACKAGES
   sourceMode(file=paste(pEPIDEMICS_CODES_PATH, "Auxiliar.R", sep=""))#, echo=TRUE)
-  sourceMode(file=paste(pEPIDEMICS_CODES_PATH, "OptimalIncidenceModel.R", sep=""))#, echo=TRUE)
+  sourceMode(file=paste(pEPIDEMICS_CODES_PATH, "OptimalModel.R", sep=""))#, echo=TRUE)
   #sourceMode(file=paste(pROOT, "/Auxiliary/PerformanceMetrics.R", sep=""))#, echo=TRUE)
   loadPackages()#c("neuralnet","forecast", "GenSA", "nortest", "copula", "moments", "distr","fGarch", "tdata"), echo=TRUE)
 }
@@ -175,13 +175,11 @@ fitModel = function(pDATA_LABELS = DATA_LABELS, ns=rep(NA, length(pDATA_LABELS))
     
     target.all = dataset_i$target
 
-    optModel_i = getOptimalModel(data = dataset_i
-                                 , dataName = dataNm_i_2
-                                 , training.series.size = n)
-                                # , training.series.totalCases = training.series.totalCases
-                                # , forecastingTimeHorizon = tuningParameters[[dataNm_i]]$forecastingTimeHorizon)
-    forecasts = getModelForecasts(optModel_i, data = dataset_i)
-    optModel_i$forecastingTime = forecasts$forecastingTime
+    optNCB_i = getOptimalModel(data = dataset_i, dataName = dataNm_i_2, training.series.size = n)
+    forecasts = getModelForecasts(optNCB_i, data = dataset_i)
+    optNCB_i$model$RMSE.Test = forecasts$RMSE.Test
+    optNCB_i$model$MAE.Test = forecasts$MAE.Test
+    optNCB_i$forecastingTime = forecasts$forecastingTime
     forecasts = forecasts$forecasts
     
     forecastingSeriesLength = length(forecasts)
@@ -199,21 +197,21 @@ fitModel = function(pDATA_LABELS = DATA_LABELS, ns=rep(NA, length(pDATA_LABELS))
       date = c(date, as.character(new_dates))
     }
     
-    optModel_i$modelParameters$start.incidence.date = as.character(date[1])
+    optNCB_i$modelParameters$start.incidence.date = as.character(date[1])
     modeIndexes = which(forecasts==max(forecasts, na.rm=TRUE))
-    optModel_i$modelParameters$mode.incidence.date = paste(as.character(date[modeIndexes]), collapse=", ")
+    optNCB_i$modelParameters$mode.incidence.date = paste(as.character(date[modeIndexes]), collapse=", ")
     vanishe.incidence.date.indexes = which(forecasts==0)
     end.incidence.date.index = vanishe.incidence.date.indexes[vanishe.incidence.date.indexes>modeIndexes][1]
     aux.index = end.incidence.date.index
     if(is.na(end.incidence.date.index)){
       aux.index = forecastingTimeHorizon
-      optModel_i$modelParameters$end.incidence.date = as.character(paste(">", date[aux.index]))
+      optNCB_i$modelParameters$end.incidence.date = as.character(paste(">", date[aux.index]))
     } 
     else {
-      optModel_i$modelParameters$end.incidence.date = as.character(date[end.incidence.date.index])
+      optNCB_i$modelParameters$end.incidence.date = as.character(date[end.incidence.date.index])
     }
     
-    Optimum_i$modelObj = optModel_i
+    Optimum_i$optNCB = optNCB_i
     #single.forecasts = cbind(single.forecasts, forecasts)#ANN, ARIMA, ETS)
 
     all.data = cbind(target=target[1:aux.index], forecasts=forecasts[1:aux.index])#View(all.data)
@@ -288,8 +286,8 @@ computeModelsResults = function(DATA_LABELS, isToExportForecastsTable=FALSE
                                 , seriesName =paste("_", dataNm_i, sep=""), nCombinators = nCombinators_i, ylab= "daily incidence")
       generateTimeSeriesGraphic(all.data, n, v=0, m, seriesName =dataNm_i
                                 , nCombinators = nCombinators_i, ylab= "daily incidence")
-      #FORMALISMS BEST MODELS
-      #single ANN
+      write.table(x = all.data, file = paste(BACKUP_RESULTS_PATH, dataNm_i,"/",dataNm_i ,"_timeSeries.csv", sep="")
+                  , dec=".", sep="\t", row.names = FALSE);#, header = TRUE);
     }
   }
   computePerformanceTables = function(){
@@ -400,11 +398,16 @@ computeModelsResults = function(DATA_LABELS, isToExportForecastsTable=FALSE
     #            , "RMSE", "modelling.time", "forecastingTime"
     # )
     labels = c(#"Distribution", "meanlog", "sdlog", "mean", "sd", "skewness", "shape", "scale", 
-      "n", "Cum.n"
+      "n", "Cum.n", "date.0" 
       , "TIP", "alpha", "beta", "lambda"
-      , "date.0" , "date.m", "date.end"
-      , "RMSE"
-      , "modelling.time")
+      , "date.m", "date.end"
+      , "RMSE.Training"
+      , "RMSE.Test"
+      , "MAE.Training"
+      , "MAE.Test"
+      , "modellingTime"
+      , "forecastingTime"
+    )
     tb = cbind(labels)
     #tuningParameters_labels = names(BACKUP_tuningParameters[[1]])
     tuningParameters_tb = NULL
@@ -436,27 +439,23 @@ computeModelsResults = function(DATA_LABELS, isToExportForecastsTable=FALSE
       trainingPercentual <<- tuningParameters$trainingPercentual
       Optimum_i = Optimum[[dataNm_i]]
       #MODELS STRUCUTRE
-      opt_i = Optimum_i$modelObj
-      dist = "beta"#opt_i$modelParameters[["Distribution"]]#=round(opt_i$modelParameters[["Distribution"]], nDec)
-      # opt_i$modelParameters[["meanlog"]]=ifelse(dist!="lnorm", NA, round(opt_i$modelParameters[["meanlog"]], nDec))
-      # opt_i$modelParameters[["sdlog"]]=ifelse(dist!="lnorm", NA, round(opt_i$modelParameters[["sdlog"]], nDec))
-      # opt_i$modelParameters[["mean"]]=ifelse(dist!="snorm", NA, round(opt_i$modelParameters[["mean"]], nDec))
-      # opt_i$modelParameters[["sd"]]=ifelse(dist!="snorm", NA, round(opt_i$modelParameters[["sd"]], nDec))
-      # opt_i$modelParameters[["skewness"]]=ifelse(dist!="snorm", NA, round(opt_i$modelParameters[["skewness"]], nDec))
-      # opt_i$modelParameters[["shape"]]=ifelse(dist!="weibull", NA, round(opt_i$modelParameters[["shape"]], nDec))
-      # opt_i$modelParameters[["scale"]]=ifelse(dist!="weibull", NA, round(opt_i$modelParameters[["scale"]], nDec))
+      opt_i = Optimum_i$optNCB
       mp = list()
       mp[["n"]] =round(opt_i$modelParameters[["training.series.size"]], 0)
       mp[["Cum.n"]]=round(opt_i$modelParameters[["training.series.totalCases"]], 0)
-      mp[["TIP"]]=round(opt_i$modelParameters[["totalIncidencePrediction"]], 0)
-      mp[["alpha"]]=ifelse(dist!="beta", NA, round(opt_i$modelParameters[["shape1"]], nDec))
-      mp[["beta"]]=ifelse(dist!="beta", NA, round(opt_i$modelParameters[["shape2"]], nDec))
-      mp[["lambda"]]=ifelse(dist!="beta", NA, round(opt_i$modelParameters[["ncp"]], nDec))      
       mp[["date.0"]]=opt_i$modelParameters[["start.incidence.date"]]
+      mp[["TIP"]]=round(opt_i$modelParameters[["totalIncidencePrediction"]], 0)
+      mp[["alpha"]]=round(opt_i$modelParameters[["shape1"]], nDec)
+      mp[["beta"]]=round(opt_i$modelParameters[["shape2"]], nDec)
+      mp[["lambda"]]=round(opt_i$modelParameters[["ncp"]], nDec)      
       mp[["date.m"]]=opt_i$modelParameters[["mode.incidence.date"]]
       mp[["date.end"]]=opt_i$modelParameters[["end.incidence.date"]]
-      mp[["RMSE"]] = round(opt_i$model$RMSE, nDec)
-      mp[["modelling.time"]] = round(opt_i$modelling.time, nDec)
+      mp[["RMSE.Training"]] = round(opt_i$model$RMSE.Training, nDec)
+      mp[["RMSE.Test"]] = ifelse(is.na(opt_i$model$RMSE.Test), NA, round(opt_i$model$RMSE.Test, nDec))
+      mp[["MAE.Training"]] = round(opt_i$model$MAE.Training, nDec)
+      mp[["MAE.Test"]] = ifelse(is.na(opt_i$model$MAE.Test), NA, round(opt_i$model$MAE.Test, nDec))
+      mp[["modellingTime"]] = round(opt_i$modellingTime, nDec)
+      mp[["forecastingTime"]] = round(opt_i$forecastingTime, nDec)
       tb = cbind(tb, unlist(mp, use.names = FALSE))
         
         #SINGLE MODEL LATEX TABLE
@@ -719,7 +718,7 @@ computeAlternativeCases = function(pDATA_LABELS=DATA_LABELS, ns = c(27, 34)){
 # #FUNCTIONS USAGE
 DATA_LABELS = c("US", "Argentina", "Brazil", "China", "Canada")
 setParametersTuning(pDATA_LABELS = DATA_LABELS)
-getTS(DATA_LABELS)
-fitModel(DATA_LABELS)
+getTS(DATA_LABELS = DATA_LABELS)
+fitModel(pDATA_LABELS = DATA_LABELS)
 computeModelsResults(DATA_LABELS = DATA_LABELS )#
 # computeAlternativeCases(pDATA_LABELS = c("China", "Korea, South"))
