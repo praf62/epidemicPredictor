@@ -1,5 +1,5 @@
 ﻿indice;date;nature;territory_name;territory_label;federator;populaction;propPopulation
-1;2019;COUNTRY;Brazil;BR;Brazil;210147125;1
+1;2019;COUNTRY;Brazil;Brazil;Brazil;210147125;1
 2;2019;STATE;Acre;AC;Brazil;881935;0.00419675
 3;2019;STATE;Alagoas;AL;Brazil;3337357;0.01588105
 4;2019;STATE;Amapá;AP;Brazil;845731;0.004024471
@@ -27,7 +27,7 @@
 26;2019;STATE;São Paulo;SP;Brazil;45919049;0.218509052
 27;2019;STATE;Sergipe;SE;Brazil;2298696;0.010938508
 28;2019;STATE;Tocantins;TO;Brazil;1572866;0.007484594
-29;2020;COUNTRY;Brazil;BR;Brazil;212559417;
+29;2020;COUNTRY;Brazil;Brazil;Brazil;212559417;
 30;2020;STATE;Acre;AC;Brazil;892059;
 31;2020;STATE;Alagoas;AL;Brazil;3375667;
 32;2020;STATE;Amapá;AP;Brazil;855439;
