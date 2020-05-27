@@ -1,4 +1,4 @@
-﻿indice;date;natureza;territorio_nome;territorio_rotulo;federador;populacao;propPopulacao
+﻿indice;date;nature;territory_name;territory_label;federator;populaction;propPopulation
 1;2019;PAIS;Brazil;BR;Brazil;210147125;1
 2;2019;ESTADO;Acre;AC;Brazil;881935;0.00419675
 3;2019;ESTADO;Alagoas;AL;Brazil;3337357;0.01588105
@@ -28,34 +28,33 @@
 27;2019;ESTADO;Sergipe;SE;Brazil;2298696;0.010938508
 28;2019;ESTADO;Tocantins;TO;Brazil;1572866;0.007484594
 29;2020;PAIS;Brazil;BR;Brazil;212559417;
-30;2020;ESTADO;Acre;AC;Brazil;887415;
-31;2020;ESTADO;Alagoas;AL;Brazil;3358093;
-32;2020;ESTADO;Amapá;AP;Brazil;850986;
-33;2020;ESTADO;Amazonas;AM;Brazil;4170348;
-34;2020;ESTADO;Bahia;BA;Brazil;14965474;
-35;2020;ESTADO;Ceará;CE;Brazil;9188818;
-36;2020;ESTADO;Distrito Federal;DF;Brazil;3034003;
-37;2020;ESTADO;Espírito Santo;ES;Brazil;4043619;
-38;2020;ESTADO;Goiás;GO;Brazil;7061961;
-39;2020;ESTADO;Maranhão;MA;Brazil;7119141;
-40;2020;ESTADO;Mato Grosso;MT;Brazil;3506116;
-41;2020;ESTADO;Mato Grosso do Sul;MS;Brazil;2796252;
-42;2020;ESTADO;Minas Gerais;MG;Brazil;21300318;
-43;2020;ESTADO;Pará;PA;Brazil;8656317;
-44;2020;ESTADO;Paraíba;PB;Brazil;4043093;
-45;2020;ESTADO;Paraná;PR;Brazil;11504999;
-46;2020;ESTADO;Pernambuco;PE;Brazil;9616451;
-47;2020;ESTADO;Piauí;PI;Brazil;3293564;
-48;2020;ESTADO;Rio de Janeiro;RJ;Brazil;17372214;
-49;2020;ESTADO;Rio Grande do Norte;RN;Brazil;3528642;
-50;2020;ESTADO;Rio Grande do Sul;RS;Brazil;11447928;
-51;2020;ESTADO;Rondônia;RO;Brazil;1788267;
-52;2020;ESTADO;Roraima;RR;Brazil;609525;
-53;2020;ESTADO;Santa Catarina;SC;Brazil;7209304;
-54;2020;ESTADO;São Paulo;SP;Brazil;46204355;
-55;2020;ESTADO;Sergipe;SE;Brazil;2312978;
-56;2020;ESTADO;Tocantins;TO;Brazil;1582639;
-57;2020;PAIS;Brazil;Brazil;Brazil;212559417;
+30;2020;ESTADO;Acre;AC;Brazil;892059;
+31;2020;ESTADO;Alagoas;AL;Brazil;3375667;
+32;2020;ESTADO;Amapá;AP;Brazil;855439;
+33;2020;ESTADO;Amazonas;AM;Brazil;4192173;
+34;2020;ESTADO;Bahia;BA;Brazil;15043793;
+35;2020;ESTADO;Ceará;CE;Brazil;9236906;
+36;2020;ESTADO;Distrito Federal;DF;Brazil;3049881;
+37;2020;ESTADO;Espírito Santo;ES;Brazil;4064780;
+38;2020;ESTADO;Goiás;GO;Brazil;7098918;
+39;2020;ESTADO;Maranhão;MA;Brazil;7156398;
+40;2020;ESTADO;Mato Grosso;MT;Brazil;3524464;
+41;2020;ESTADO;Mato Grosso do Sul;MS;Brazil;2810886;
+42;2020;ESTADO;Minas Gerais;MG;Brazil;21411789;
+43;2020;ESTADO;Pará;PA;Brazil;8701618;
+44;2020;ESTADO;Paraíba;PB;Brazil;4064251;
+45;2020;ESTADO;Paraná;PR;Brazil;11565208;
+46;2020;ESTADO;Pernambuco;PE;Brazil;9666777;
+47;2020;ESTADO;Piauí;PI;Brazil;3310801;
+48;2020;ESTADO;Rio de Janeiro;RJ;Brazil;17463128;
+49;2020;ESTADO;Rio Grande do Norte;RN;Brazil;3547108;
+50;2020;ESTADO;Rio Grande do Sul;RS;Brazil;11507839;
+51;2020;ESTADO;Rondônia;RO;Brazil;1797626;
+52;2020;ESTADO;Roraima;RR;Brazil;612715;
+53;2020;ESTADO;Santa Catarina;SC;Brazil;7247033;
+54;2020;ESTADO;São Paulo;SP;Brazil;46446157;
+55;2020;ESTADO;Sergipe;SE;Brazil;2325083;
+56;2020;ESTADO;Tocantins;TO;Brazil;1590921;
 58;2020;PAIS;Argentina;Argentina;Argentina;45195774;
 59;2020;PAIS;Bolivia;Bolivia;Bolivia;11673021;
 60;2020;PAIS;Chile;Chile;Chile;19116201;
