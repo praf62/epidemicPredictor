@@ -15,13 +15,13 @@ getSourceMode <<- function(isToDebug=FALSE){
   return(retFunction)
 }
 todayDate <<- as.character(Sys.Date())
-isToDebug <<- TRUE
+isToDebug <<- F#TRUE
 sourceMode <<- getSourceMode(isToDebug)
 tuningParameters  <<- NULL
 setParametersTuning = function(pTrainingPercentual = 1
-                               , pForecastingTimeHorizon = 600
+                               , pForecastingTimeHorizon = 1000
                                , pGenSA = list(max.call = 3E+04
-                                               , max.time=6e+2, maxit = 5e+3
+                                               , max.time=6, maxit = 5e+3
                                                , temperature = 1e+8, nb.stop.improvement = 20) 
                                , pDATA_LABELS
                                , pROOT = "./"
@@ -80,9 +80,10 @@ getTS = function(URL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-1
                           , DATA_LABELS =
                              c("Argentina", "Brazil", "China", "Germany", "India", "Iran", "Italy", "Japan", "France"
                                , "Korea, South", "Spain","United Kingdom", "US")){
+  URL_names = list(COUNTRIES = "COUNTRIES", BRAZIL = "BRAZIL")
   jhu_url = URL
   saveCountryData = function(contry_i){
-    data_i = data[data$Country.Region==country_i,]; #View(data_i, title = country_i)
+    data_i = data[data$`Country/Region`==country_i,]; #View(data_i, title = country_i)
     cumulative_i = as.integer(lapply(data_i[, col_names[5:nCols]], sum))
     target_i = c(cumulative_i[1]
                  , cumulative_i[2:seriesSize] - cumulative_i[1:(seriesSize-1)])
@@ -94,6 +95,48 @@ getTS = function(URL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-1
     #View(data_to_save_i)
     write.table(x = data_to_save_i, file = paste(DATA_PATH, "/covid_19_dailyConfirmedCases_", country_i, ".csv", sep=""), dec=".", sep=";", row.names = FALSE);#, header = TRUE); 
   }
+  getDataFromUrl = function(str_URL){
+    # my_url = url(str_URL)#, encoding = "UTF-8")
+    # data <- read.csv (my_url, sep=",",fileEncoding = "UTF-8",  encoding = "UTF-8", stringsAsFactors=FALSE) 
+    # mySink("Start getDataFromUrl OK!")
+    data <- as.data.frame(fread(str_URL, sep=",",  encoding = "UTF-8", stringsAsFactors=FALSE))#;View(data))#;View(data)
+    if(ncol(data)<2){
+      # close(my_url)
+      data <- as.data.frame(fread(str_URL, sep=";",  encoding = "UTF-8", stringsAsFactors=FALSE))#;View(data))#;View(data)
+    }
+    #View(data)
+    # mySink("getDataFromUrl OK!")
+    return(data)
+  }
+  downloadAndSaveData = function(){
+    str_URLs = list()
+    str_URLs[[URL_names$COUNTRIES]] = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv"
+    str_URLs[[URL_names$BRAZIL]] = "https://data.brasil.io/dataset/covid19/caso.csv.gz"
+    str_URLs[[paste(URL_names$COUNTRIES, "DEATHS", sep="_")]] = "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv"
+    str_URLs[[paste(URL_names$BRAZIL, "DEATHS", sep="_")]] = "https://data.brasil.io/dataset/covid19/obito_cartorio.csv.gz"
+    nmsURLs = names(str_URLs)
+    nURLs = length(nmsURLs)
+    EPIDEMICS_DATA_PATH = paste(MyROOT, "Epidemics/Data/", sep="")
+    cl = getParallelComputingConfiguration(coresProp = 0.8)
+    foreach(i = 1:nURLs
+            , .export = c('getDataFromUrl', 'URL_names')
+            , .packages = c("data.table"))%dopar%{#i=2
+              nm_i = nmsURLs[i]
+              data_i <- getDataFromUrl(str_URL = str_URLs[[i]])#View(data_i, nmsURLs[i])   
+              if(nm_i==URL_names$BRAZIL){
+                data_i = data_i[, c('date', 'state', 'city', 'place_type', 'confirmed')]
+                # dates = as.character(data_i$date)
+                # data_i = data[data$state==state_i & data$place_type=="state",]; #View(data_i, title = state_i)
+                # dates = as.character(data_i$date)
+                setorder(x = data_i, state, city, date); 
+                View(data_i, title = paste(":", nm_i))
+              }
+              path_i = paste(EPIDEMICS_DATA_PATH, nm_i, ".csv", sep="")
+              fwrite(x = data_i, file = path_i, append = FALSE)
+            }
+    stopCluster(cl$cluster)#Stopping your cluster
+    print(paste(Sys.time(), ":", paste(URL_names, collapse = " and "), "OK!"))
+  }
   ##verifying if the case has been studied today...
   nCountries = length(DATA_LABELS)
   #today_DATA_PATH = paste(DATA_PATH, todayDate, sep="")
@@ -103,18 +146,21 @@ getTS = function(URL = "https://raw.githubusercontent.com/CSSEGISandData/COVID-1
   if(folderExists==FALSE){
     dir.create(folder)
     dir.create(RESULTS_PATH)
-    loadPackages("RCurl")
-    url = getURL(jhu_url)
-    data <- read.csv (text = url)
+    loadPackages("data.table")
+    # url = getURL(jhu_url)
+    data <- getDataFromUrl(jhu_url)#read.csv (text = url)
     #Country.Region_s = names(table(data$Country.Region)); print(cbind(Country.Region_s))
     col_names = names(data); nCols = length(col_names)
     dates = col_names[5:nCols]
     seriesSize = length(dates)
-    dates = paste(dates, collapse =  "")
-    loadPackages("stringr")
-    dates = str_split(string = dates, pattern = "X")
-    dates = dates[[1]][-1]
+    # dates = paste(dates, collapse =  "")
+    # loadPackages("stringr")
+    # dates = str_split(string = dates, pattern = "X")
+    # dates = dates[[1]][-1]
     date = as.Date(dates, "%m.%d.%y")
+    if(length(which(is.na(date)))==seriesSize){
+      date = as.Date(dates, "%m/%d/%y")
+    }
     for(i in 1:nCountries){#i=1;i=3
       country_i = DATA_LABELS[i]
       saveCountryData(country_i)
@@ -399,7 +445,7 @@ computeModelsResults = function(DATA_LABELS, isToExportForecastsTable=FALSE
     # )
     labels = c(#"Distribution", "meanlog", "sdlog", "mean", "sd", "skewness", "shape", "scale", 
       "n", "Cum.n", "date.0" 
-      , "TIP", "alpha", "beta", "lambda"
+      , "TIP", "nNCBs", "weight", "alpha", "beta", "lambda"
       , "date.m", "date.end"
       , "RMSE.Training"
       , "RMSE.Test"
@@ -445,9 +491,11 @@ computeModelsResults = function(DATA_LABELS, isToExportForecastsTable=FALSE
       mp[["Cum.n"]]=round(opt_i$modelParameters[["training.series.totalCases"]], 0)
       mp[["date.0"]]=opt_i$modelParameters[["start.incidence.date"]]
       mp[["TIP"]]=round(opt_i$modelParameters[["totalIncidencePrediction"]], 0)
-      mp[["alpha"]]=round(opt_i$modelParameters[["shape1"]], nDec)
-      mp[["beta"]]=round(opt_i$modelParameters[["shape2"]], nDec)
-      mp[["lambda"]]=round(opt_i$modelParameters[["ncp"]], nDec)      
+      mp[["nNCBs"]]=opt_i$modelParameters[["nNCBs"]]
+      mp[["weights"]]=paste(round(opt_i$modelParameters[["weights"]], nDec), collapse = ", ")
+      mp[["alpha"]]=paste(round(opt_i$modelParameters[["shape1s"]], nDec), collapse = ", ")
+      mp[["beta"]]=paste(round(opt_i$modelParameters[["shape2s"]], nDec), collapse = ", ")
+      mp[["lambda"]]=paste(round(opt_i$modelParameters[["ncps"]], nDec), collapse = ", ")      
       mp[["date.m"]]=opt_i$modelParameters[["mode.incidence.date"]]
       mp[["date.end"]]=opt_i$modelParameters[["end.incidence.date"]]
       mp[["RMSE.Training"]] = round(opt_i$model$RMSE.Training, nDec)
@@ -716,7 +764,7 @@ computeAlternativeCases = function(pDATA_LABELS=DATA_LABELS, ns = c(27, 34)){
   computeModelsResults(DATA_LABELS = DATA_LABELS)#
 }
 # #FUNCTIONS USAGE
-DATA_LABELS = c("US", "Argentina", "Brazil", "China", "Canada")
+DATA_LABELS = c("US", "Argentina")#, "Brazil", "China", "Canada")
 setParametersTuning(pDATA_LABELS = DATA_LABELS)
 getTS(DATA_LABELS = DATA_LABELS)
 fitModel(pDATA_LABELS = DATA_LABELS)
